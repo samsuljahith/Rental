@@ -1,0 +1,60 @@
+/* src/app/app.css */
+
+/* Global box-sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Ensure full height and width for root elements */
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  background-color: white; /* Instead of @apply bg-white */
+}
+
+.dark html,
+.dark body,
+.dark #root,
+.dark .app {
+  background-color: black; /* Instead of @apply dark:bg-black */
+}
+
+/* Define CSS variables for light and dark themes */
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    /* ... your CSS variables ... */
+  }
+
+  .dark {
+    --background: 222.2 84% 3.9%;
+    --foreground: 210 40% 98%;
+    /* ... your dark theme CSS variables ... */
+  }
+}
+
+/* Dashboard container styling */
+.dashboard-container {
+  padding-top: 2rem;
+  padding-bottom: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Base layer for border and body styling */
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
